@@ -1,0 +1,56 @@
+# dependencies
+node_modules/
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# coverage
+coverage/
+
+# build output
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# uploads/temp files
+uploads/
+tmp/
+temp/
+
+# cache
+.cache/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# dotenv
+.env.*
+
+# prisma
+prisma/dev.db
+prisma/dev.db-journal
