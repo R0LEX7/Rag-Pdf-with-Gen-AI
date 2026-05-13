@@ -1,9 +1,17 @@
 import express from "express";
 import cors from "cors";
 import multer from "multer";
+import { Queue } from "bullmq";
+
 const app = express();
 const port = 8000;
 
+const queue = new Queue("file-upload-queue", {
+  connection: {
+    host: "localhost",
+    port: "6380",
+  },
+});
 // multer setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -21,7 +29,15 @@ app.use(cors());
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
-app.post("/upload-pdf", upload.single("pdf"), (req, res) => {
+app.post("/upload-pdf", upload.single("pdf"), async (req, res) => {
+  await queue.add(
+    "file-ready",
+    JSON.stringify({
+      filename: req.file.originalname,
+      destination: req.file.destination,
+      path: req.file.path,
+    }),
+  );
   return res.json({ message: "uploaded" });
 });
 

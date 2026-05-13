@@ -5,27 +5,29 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.0.9",
-      "onFail": "download"
+      "dev:worker": "node --watch src/worker.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devEngines": {
+      "packageManager": {
+        "name": "pnpm",
+        "version": "11.0.9",
+        "onFail": "download"
+      }
+    },
+    "type": "module",
+    "devDependencies": {
+      "@types/express": "~4.17.25",
+      "@types/multer": "^2.1.0",
+      "@types/node": "^25.6.2"
+    },
+    "dependencies": {
+      "bullmq": "^5.76.8",
+      "cors": "^2.8.6",
+      "express": "~4.22.1",
+      "multer": "^2.1.1"
     }
-  },
-  "type": "module",
-  "devDependencies": {
-    "@types/express": "~4.17.25",
-    "@types/multer": "^2.1.0",
-    "@types/node": "^25.6.2"
-  },
-  "dependencies": {
-    "cors": "^2.8.6",
-    "express": "~4.22.1",
-    "multer": "^2.1.1"
   }
-}
