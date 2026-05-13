@@ -2,11 +2,20 @@
 import * as React from "react";
 
 const FileUploadComponent: React.FC = () => {
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
+      if (file) {
+        const formData = new FormData();
 
-      console.log("file ", file);
+        formData.append("pdf", file);
+
+        const res = await fetch("http://localhost:8000/upload-pdf", {
+          method: "POST",
+          body: formData,
+        });
+        console.log("file uploaded", res);
+      }
     }
   };
   return (
